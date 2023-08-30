@@ -39,7 +39,7 @@ jobs:
 
     - name: Build, tag, and push image to Amazon ECR
       env:
-        ECR_REGISTRY: 853845057632.dkr.ecr.us-east-1.amazonaws.com/samplebank       
+        ECR_REGISTRY: 853845057632.dkr.ecr.us-east-1.amazonaws.com       
         ECR_REPOSITORY: simplebank
         IMAGE_TAG: 1
       run: |
