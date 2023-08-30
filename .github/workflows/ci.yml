@@ -30,20 +30,17 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-1
 
-    - name: Login to Amazon ECR Public
-      id:  login-ecr-public
+    - name: Login to Amazon ECR 
+      id:  login-ecr
       uses: aws-actions/amazon-ecr-login@v1
-      with:
-        mask-password: 'true'
-        registry-type: public
+     
 
    
 
     - name: Build, tag, and push image to Amazon ECR
       env:
-        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        REGISTRY_ALIAS: y6l2q7p3
-        ECR_REPOSITORY: simplebank1
+        ECR_REGISTRY: 853845057632.dkr.ecr.us-east-1.amazonaws.com/samplebank       
+        ECR_REPOSITORY: simplebank
         IMAGE_TAG: ${{ github.sha }}
       run: |
         docker build -t $REGISTRY/$REGISTRY_ALIAS/$REPOSITORY:$IMAGE_TAG .
